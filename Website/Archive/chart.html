@@ -1,0 +1,84 @@
+<style type="text/css">
+          body {
+          font-family:Helvetica, Arial, sans-serif;
+          font-size:12px;
+      }
+      canvas {
+          display:block;
+          margin:20px auto;
+          width:1000px;
+          height:200px;
+          border:1px solid #333;
+      }
+      .controls {
+          width:1000px;
+          margin:10px auto;
+      }
+      .controls > div {
+          border-bottom:1px solid #EEE;
+          padding:5px 0;
+      }
+      .controls label {
+          width:200px;
+          display:inline-block;
+      }
+      .controls input {
+          vertical-align:middle;
+      }
+</style>
+
+<canvas id="myChart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+  var elements = 20;
+  var labels = [...Array(elements).keys()]; //spread operator acts like range
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+      title: {
+        text: 'Hi',
+        fontSize: 60,
+      },
+
+      // The data for our dataset
+      data: {
+          labels: labels,
+          datasets: [{
+              label: "My First dataset",
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: [0, .2, 0, -.2, .5, -.5, 1],
+          }]
+      },
+      // Configuration options go here
+      options: {
+        maintainAspectRatio: false,
+        responsive: false,
+        legend: {
+        display: false
+        },
+        scales: {
+            yAxes: [{
+              gridLines: {
+                  display:false
+                  },
+                ticks: {
+                    max: 1.2,
+                    min: -1.2,
+                    display: false
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                    display:false
+                    },
+                  ticks: {
+                      display:false
+                  }
+                      }]
+            }
+      }
+  });
+
+</script>
