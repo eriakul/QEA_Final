@@ -1,0 +1,32 @@
+
+    body {
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:12px;
+        padding: 3em;
+    }
+    canvas {
+        display:inline;
+        margin:20px auto;
+        width:1000px;
+        height:200px;
+        border:1px solid #333;
+    }
+    .learndisplay{
+      display: flex;
+    }
+    .controls {
+        /* width:1000px; */
+        margin:10px auto;
+    }
+    .controls > div {
+        border-bottom:1px solid #EEE;
+        padding:5px 0;
+    }
+    .controls label {
+        /* width:200px; */
+        /* display:inline-block; */
+    }
+    .controls input {
+        vertical-align:middle;
+        display: flex;
+    }
