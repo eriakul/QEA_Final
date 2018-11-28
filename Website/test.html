@@ -3,8 +3,16 @@
 
 <head>
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-  <script src="js/dampahead.js"<link rel="stylesheet" href="test.css">></script>
+  <script src="js/dampahead.js"></script>
+  <script src="js/content_page.js"></script>
   <link rel="stylesheet" href="test.css">
+
+  <link rel="stylesheet" href="js/mathscribe/jqmath-0.4.3.css">
+
+	<script src="js/mathscribe/jquery-1.4.3.min.js"></script>
+	<script src="js/mathscribe/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+
+
 </head>
 
 
@@ -25,14 +33,90 @@
     </ul>
   </nav>
 
+
+
+
   <div class="text-container">
-    <h1>DAMPA BB</h1>
-    <h2>Section 1</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h1>Test Your Knowledge</h1>
+
+    <h2>Spring Mass Damper Systems</h2>
+
+    <p>Consider this system.</p>
+
+    <div class="image-container">
+      <img src="Assets/Images/1massgraphic.png" alt="">
+    </div>
+
+    <p>The ODE of a mass, m, connected to a wall by a spring with spring constant k and a damper with damper constant b is</p>
+
+    $$ mx'' = -kx - bx' $$
+
+    <p>Reorganized, that is</p>
+
+    $$ mx'' + kx + bx' = 0 $$
+
+    <p>Now, consider a system that contains two masses coupled together to a wall with springs and dampers.</p>
+
+    <div class="image-container">
+      <img src="Assets/Images/2massgraphic.png" alt="">
+    </div>
+
+    <h3>Problem 1) Write the ODE(s) for the coupled spring-mass-damper system.</h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p1")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p1">
+        <p>Equation for m1, </p>
+        $$m_1 x_1'' = -k_1 x_1 + k_2 (x_2 - x_1) - b_1 (x_1') - b_2 (x_1' - x_2')$$
+        <p>Equation for m2, </p>
+        $$m_2 x_2'' = -k_2 (x_2 - x_1) - b_2 (x_2' - x_1')$$
+      </div>
+    </div>
+
+    <h3>Problem 2)* We are going to assume that we can find a solution for this coupled set of second order
+      differential equations such that both masses are oscillating with the same frequency $ω$, but with different amplitudes.
+       Plug in trial solutions $x_1 = C_1 e^iωt$ and $x_2 = C_2 e^iωt$ to get to a system of two equations in $C_1$, $C_2$ and $ω$.
+     </h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p2")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p2">
+        <p>Equation for m1, </p>
+        $$m_1 (C_1 e^iωt)'' = -k_1 (C_1 e^iωt)  + k_2 ((C_2 e^iωt) - (C_1 e^iωt)) - b_1 ((C_1 e^iωt)') - b_2 ((C_1 e^iωt)' - (C_2 e^iωt)')$$
+        <p>Equation for m2, </p>
+        $$m_2 (C_2 e^iωt)'' = -k_2 ((C_2 e^iωt) - (C_1 e^iωt)) - b_2 ((C_2 e^iωt)' - x_1')$$
+      </div>
+    </div>
+
+    <p>Copy this file, and replace this sample HTML with your own web page.  See the
+<a href="http://mathscribe.com/author/jqmath.html">jqMath documentation</a> for help.</p>
+
+            <p>If $ax^2+bx+c=0$ with $a≠0$, then:</p>
+
+            $$x={-b±√{b^2-4ac}}/{2a}$$
+
+            <p>If you use other software that generates MathML, you can include that here also:</p>
+            <math display="block">
+              <mrow>
+                <mi mathvariant="normal">&pi;</mi>
+                <mo>≈</mo>
+                <mfrac>
+                  <mn>355</mn>
+                  <mn>113</mn>
+                </mfrac>
+              </mrow>
+            </math>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <h2>Section 2</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
+
 
 </body>
 
