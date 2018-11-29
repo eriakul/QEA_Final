@@ -16,6 +16,12 @@ body{
 	flex-direction: column;
 }
 
+code {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
+}
+
 #dampahead_container {
 	left:0;right:0;
 	top:0;bottom:0;}
