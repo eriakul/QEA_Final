@@ -113,6 +113,10 @@ code {
 				width: auto;
 				max-height: 200px;
 			}
+		 	.long img{
+				max-height: 800px;
+				height: 800px
+			}
 
 		.answer-button {
 		    background-color: #ff6d54;

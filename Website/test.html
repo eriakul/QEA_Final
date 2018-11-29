@@ -95,7 +95,7 @@
     <p>Now, imagine you displaced the masses and set the system into motion. The way the blocks move is described by the free vibration response of the system. </p>
 
     <h3>Problem 3) We are going to assume that we can find a solution for this system such that both masses are oscillating with the same frequency $ω$, but with different amplitudes.
-       To do so, replace $Y$ with $X e^{-iωt}$.
+       To do so, replace $Y$ with $X e^{-iωt}$, where $X$ is an unknown vector of constants.
      </h3>
 
     <div class="image-container">
@@ -126,7 +126,7 @@
     <div class="image-container">
       <div class="answer-box" id = "p4">
         <p>There are a few ways you can solve this problem. One way is to use the <a href="https://www.mathworks.com/help/matlab/ref/eig.html">eig() function</a> in Matlab. </p>
-        <p>If you compare $M ω X = D X $ and $ λBx = Ax $, you'll notice that $ω$ corresonds to $λ$,
+        <p>If you compare $M ω X = D X $ and $ λBx = Ax $, you'll notice that the scalar $ω$ corresonds to the scalar $λ$,
         the eigenvalues of the problem.</p>
         <p>Our goal is to solve for $ω$, the frequencies at which both masses are moving at the same frequency
            but not necessarily the same amplitudes. These frequencies are known as the system's <b>eigenfrequencies</b>.</p>
@@ -163,33 +163,67 @@
     integrity.</p>
 
     <p>One of the precautions they took was installing a tuned mass damper at the top of the building that dampens the
-    oscillations caused by wind and earthquakes. </p>
+    oscillations caused by wind and earthquakes. Essentially, it is a giant weight suspended at the top of the tower. </p>
 
-    <p></p>
+    <p>The Taipei 101 damper is one of the only skyscraper dampers viewable to the public and became a significant tourist attraction.</p>
+
+    <div class="image-container">
+      <img src="Assets/Images/damper.jpg" alt="">
+    </div>
+    <p>The building even has its own mascots called the Damper Babies. The Damper Babies explain
+    the function of the Taipei 101 tuned mass damper in this video. </p>
+
     <div class="image-container">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/gwsNyCBSgrM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <p>Copy this file, and replace this sample HTML with your own web page.  See the
-<a href="http://mathscribe.com/author/jqmath.html">jqMath documentation</a> for help.</p>
 
-            <p>If $ax^2+bx+c=0$ with $a≠0$, then:</p>
+    <p>If you want to see the direct effects of a tuned-mass damper, this video does a wonderful job illustrating it.</p>
 
-            $$x={-b±√{b^2-4ac}}/{2a}$$
+    <div class="image-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/f1U4SAgy60c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
-            <p>If you use other software that generates MathML, you can include that here also:</p>
-            <math display="block">
-              <mrow>
-                <mi mathvariant="normal">&pi;</mi>
-                <mo>≈</mo>
-                <mfrac>
-                  <mn>355</mn>
-                  <mn>113</mn>
-                </mfrac>
-              </mrow>
-            </math>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Let's pretend to be the team of architects designing Taipei 101! Let's say that earthquakes in Taipei tend to have
+    a frequency of $ω$. Our goal is to create a simplified model of the skyscraper and find its natural frequencies.</p>
+
+    <p>We can put all our previous calculations to use by modelling the building like this.</p>
+
+    <div class="image-container long">
+      <img src="Assets/Images/model.png" >
+    </div>
+
+    <p>In this model, the building is represented by discrete masses and the elasticity and stiffness of the building
+    is represented by k and b respectively. The mass at the top of the model is the damper mass and $k_d$ represent the
+    spring factor of the damper while $b_d$ represents the damping factor. The earthquake is represented by one-dimensional
+    left and right displacements of the ground.</p>
+
+    <p>For simplicity's sake, lets set the entire building to be one mass. The resulting system is exactly the one we saw earlier.</p>
+
+    <div class="image-container">
+      <img src="Assets/Images/2massgraphic.png" alt="">
+    </div>
+
+    <p>In this system, $m_1$ is the mass of the tower and $m_2$ represents the damper mass. We will represent
+    the earthquake as a sinusoidal force, $f = sin(ω t)$, that effects only $m_1$ directly.</p>
+
+    <h3>Problem 5) Taking your solution from problem 2, how would you make the equation take into account
+    the additional force, $f = sin(ω t)$?</h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p5")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p5">
+        <p>The matrix form of this solution is </p>
+        $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \f; \0] sin(ω t)$$
+        <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
+      </div>
+    </div>
+
     <h2>Section 2</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
   </div>
 
 
