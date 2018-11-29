@@ -76,10 +76,9 @@
       </div>
     </div>
 
-    <h3>Problem 2)* We are going to assume that we can find a solution for this coupled set of second order
-      differential equations such that both masses are oscillating with the same frequency $ω$, but with different amplitudes.
-       Plug in trial solutions $x_1 = C_1 e^iωt$ and $x_2 = C_2 e^iωt$ to get to a system of two equations in $C_1$, $C_2$ and $ω$.
-     </h3>
+    <h3>Problem 2) Reduce the equations you derived from problem 1 into a system of four
+    first-order equations. Hint: Define $x_1'$ and $x_2'$ as new variables. Your answer should be in the form of $M d/{dt}Y + C Y = 0 $ where M is a
+    matrix of mass values and Y is a vector containing the position and velocity of each mass.</h3>
 
     <div class="image-container">
       <button class="answer-button" onclick='toggle_answer("p2")'>Check Answer</button>
@@ -87,10 +86,29 @@
 
     <div class="image-container">
       <div class="answer-box" id = "p2">
-        <p>Equation for m1, </p>
-        $$m_1 (C_1 e^iωt)'' = -k_1 (C_1 e^iωt)  + k_2 ((C_2 e^iωt) - (C_1 e^iωt)) - b_1 ((C_1 e^iωt)') - b_2 ((C_1 e^iωt)' - (C_2 e^iωt)')$$
-        <p>Equation for m2, </p>
-        $$m_2 (C_2 e^iωt)'' = -k_2 ((C_2 e^iωt) - (C_1 e^iωt)) - b_2 ((C_2 e^iωt)' - x_1')$$
+        <p>The matrix form of this solution is </p>
+        $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \0; \0]$$
+        <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
+      </div>
+    </div>
+
+    <p>Now, imagine you displaced the masses and set the system into motion. The way the blocks move is described by the frequency response of the system. </p>
+
+    <h3>Problem 3) We are going to assume that we can find a solution for this system such that both masses are oscillating with the same frequency $ω$, but with different amplitudes.
+       To do so, replace $Y$ with $D e^{-iωt}$.
+     </h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p3")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p3">
+        <p>The new equation of motion is </p>
+        $$-M ω D e^{-iwt} + C D e^{-iwt} = 0 $$
+        <p>Which can be simplified and reorganized to be </p>
+        $$M ω D = C D$$
+
       </div>
     </div>
 
