@@ -215,14 +215,18 @@
 
     <div class="image-container">
       <div class="answer-box" id = "p5">
-        <p>The matrix form of this solution is </p>
+        <p>You may recall from earlier that a one-mass spring damper system is represented by this equation.</p>
+        $$ mx'' + kx + bx' = 0 $$
+        <p>An additional external force can be included like this.</p>
+        $$ mx'' + kx + bx' = f(t) $$
+        <p>We add the force into the matrix system in the same way.</p>
         $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \f; \0] sin(ω t)$$
         <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
       </div>
     </div>
 
-    <h2>Section 2</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2>Transfer Functions and Frequency Response</h2>
+    <h3>Modify <a href="https://drive.google.com/file/d/1sbpPlg7d72l8wX3Ds4V3xq5BeOPoQAuN/view">this notebook</a> to represent the system above.</h3>
 
   </div>
 
