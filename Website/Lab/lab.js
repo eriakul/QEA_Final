@@ -545,7 +545,7 @@ p.nominalBounds = new cjs.Rectangle(-26.6,-14.7,53.3,35.5);
 		this.b2 = 10;
 		this.frequency = 0;
 		this.block1 = {x: 160, v: 0, mass: 5};
-		var wall  = {x: 0,  lx: 30, v: 0, t: 0};
+		var wall  = {x: 0,  lx: 0, v: 0, t: 0};
 		var spring_length = this.block1.x - (wall.x + wall_width);
 		this.block2 = {x: this.block1.x + spring_length + block_size, v: 0, mass: 5};
 		
@@ -605,7 +605,7 @@ p.nominalBounds = new cjs.Rectangle(-26.6,-14.7,53.3,35.5);
 			
 				var F_spring = -1*_this.k * ( ( _this.block1.x - (wall.x + wall_width) ) - spring_length );
 				var F_damper = -1*_this.b * ( _this.block1.v - wall.v );
-				var F_spring1 = -1*_this.k2 * (( _this.block2.x - ( _this.block1.x + block_size ))- spring_length);
+				var F_spring1 = 1*_this.k2 * (( _this.block2.x - ( _this.block1.x + block_size ))- spring_length);
 				var F_damper1 = -1*_this.b2 * ( _this.block1.v - _this.block2.v );
 			
 					var a = ( F_spring + F_damper + F_spring1 + F_damper1 ) / _this.block1.mass;
@@ -757,8 +757,8 @@ p.nominalBounds = new cjs.Rectangle(-26.6,-14.7,53.3,35.5);
 		
 		function f_up_click() {
 			if (parseFloat(_this.f_text.text) < 10) {
-				_this.f_text.text = parseFloat(_this.f_text.text) + .5;
-				_this.lab_display.frequency = parseFloat(_this.f_text.text);
+				_this.f_text.text = (parseFloat(_this.f_text.text) + .1).toFixed(1);
+				_this.lab_display.frequency = parseFloat(_this.f_text.text).toFixed(1);
 			}
 		}
 		
@@ -806,8 +806,8 @@ p.nominalBounds = new cjs.Rectangle(-26.6,-14.7,53.3,35.5);
 		
 		function f_down_click() {
 			if (parseFloat(_this.f_text.text) > 0) {
-				_this.f_text.text = parseFloat(_this.f_text.text) - .5;
-				_this.lab_display.frequency = parseFloat(_this.f_text.text);
+				_this.f_text.text = (parseFloat(_this.f_text.text) - .1).toFixed(1);
+				_this.lab_display.frequency = parseFloat(_this.f_text.text).toFixed(1);
 			}
 		}
 	}
