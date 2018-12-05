@@ -15,7 +15,7 @@ lib.ssMetadata = [];
 	// Layer_1
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f().s("#BDCCD4").ss(14,1,1).p("AjlFPIHLlPInLlO");
-	this.shape.setTransform(7,2.7);
+	this.shape.setTransform(-5.1,2.6,1,1,180);
 
 	this.shape_1 = new cjs.Shape();
 	this.shape_1.graphics.f("#E3E3E3").s().p("AkxBCQh+gbAAgnQAAglB+gcQB/gbCyAAQCzAAB+AbQB/AcAAAlQAAAnh/AbQh+AbizAAQiyAAh/gbg");
@@ -51,7 +51,7 @@ lib.ssMetadata = [];
 
 	this.shape_9 = new cjs.Shape();
 	this.shape_9.graphics.f().s("#FFFFFF").ss(14,1,1).p("AjlFPIHLlPInLlO");
-	this.shape_9.setTransform(7,2.7);
+	this.shape_9.setTransform(-5.1,2.6,1,1,180);
 
 	this.shape_10 = new cjs.Shape();
 	this.shape_10.graphics.f("#000000").s().p("AkxCUQh+gcAAgmIAAkAINfAAIAAEAQAAAmh/AcQh+AbizAAQiyAAh/gbg");
@@ -83,31 +83,37 @@ p.nominalBounds = new cjs.Rectangle(-100,-96.7,200,193.6);
 (lib.page_arrows = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
+	// timeline functions:
+	this.frame_0 = function() {
+		this.button_1.addEventListener("click", fl_ClickToGoToWebPage);
+		
+		function fl_ClickToGoToWebPage() {
+			window.open("http://www.adobe.com", "_blank");
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+
 	// left_arrow
-	this.instance = new lib.button();
-	this.instance.parent = this;
-	this.instance.setTransform(100,100);
-	new cjs.ButtonHelper(this.instance, 0, 1, 1);
+	this.button_1 = new lib.button();
+	this.button_1.name = "button_1";
+	this.button_1.parent = this;
+	this.button_1.setTransform(25,25,0.25,0.25);
+	new cjs.ButtonHelper(this.button_1, 0, 1, 1);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	// right_arrow
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#BDCCD4").ss(14,1,1).p("ADmlOInLFOIHLFP");
-	this.shape.setTransform(91,102.7);
-
-	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.button_1).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(100,103.3,200,193.6);
+p.nominalBounds = new cjs.Rectangle(25,25.8,50,48.4);
 // library properties:
 lib.properties = {
 	id: '62470E7EEE12B64FB4FD4FDA72C3E9B1',
-	width: 200,
-	height: 200,
+	width: 50,
+	height: 50,
 	fps: 24,
 	color: "#FFFFFF",
-	opacity: 1.00,
+	opacity: 0.00,
 	manifest: [],
 	preloads: []
 };

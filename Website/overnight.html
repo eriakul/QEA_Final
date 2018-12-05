@@ -3,9 +3,10 @@
 
 <head>
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
   <script src="js/dampahead.js"></script>
   <script src="js/content_page.js"></script>
-  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="css/content.css">
 
   <link rel="stylesheet" href="js/mathscribe/jqmath-0.4.3.css">
 
@@ -17,7 +18,7 @@
 
 
 
-<body onload="init();" style="margin:0px;">
+<body onload="init(); right_arrow_init();" style="margin:0px;">
 
 	<div id="dampahead_container" style="background-color:rgba(255, 255, 255, 1.00); width:1224px; height:360px">
 		<canvas id="canvas" width="1224" height="360" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
@@ -44,7 +45,7 @@
     <p>Consider this system.</p>
 
     <div class="image-container">
-      <img src="Assets/Images/1massgraphic.png" alt="">
+      <img src="assets/Images/1massgraphic.png" alt="">
     </div>
 
     <p>The ODE of a mass, m, connected to a wall by a spring with spring constant k and a damper with damper constant b is</p>
@@ -58,7 +59,7 @@
     <p>Now, consider a system that contains two masses coupled together to a wall with springs and dampers.</p>
 
     <div class="image-container">
-      <img src="Assets/Images/2massgraphic.png" alt="">
+      <img src="assets/Images/2massgraphic.png" alt="">
     </div>
 
     <h3>Problem 1) Write the ODE(s) for the coupled spring-mass-damper system.</h3>
@@ -168,7 +169,7 @@
     <p>The Taipei 101 damper is one of the only skyscraper dampers viewable to the public and became a significant tourist attraction.</p>
 
     <div class="image-container">
-      <img src="Assets/Images/damper.jpg" alt="">
+      <img src="assets/Images/damper.jpg" alt="">
     </div>
     <p>The building even has its own mascots called the Damper Babies. The Damper Babies explain
     the function of the Taipei 101 tuned mass damper in this video. </p>
@@ -189,7 +190,7 @@
     <p>We can put all our previous calculations to use by modelling the building like this.</p>
 
     <div class="image-container long">
-      <img src="Assets/Images/model.png" >
+      <img src="assets/Images/model.png" >
     </div>
 
     <p>In this model, the building is represented by discrete masses and the elasticity and stiffness of the building
@@ -200,7 +201,7 @@
     <p>For simplicity's sake, lets set the entire building to be one mass. The resulting system is exactly the one we saw earlier.</p>
 
     <div class="image-container">
-      <img src="Assets/Images/2massgraphic.png" alt="">
+      <img src="assets/Images/2massgraphic.png" alt="">
     </div>
 
     <p>In this system, $m_1$ is the mass of the tower and $m_2$ represents the damper mass. We will represent
@@ -228,6 +229,14 @@
     <h2>Transfer Functions and Frequency Response</h2>
     <h3>Modify <a href="https://drive.google.com/file/d/1sbpPlg7d72l8wX3Ds4V3xq5BeOPoQAuN/view">this notebook</a> to represent the system above.</h3>
 
+  </div>
+
+
+  <div class="page_nav">
+    <object id="EdgeID2" type="text/html" width="70" height="70" data-dw-widget="Edge" data="animation_assets/left_arrow/Assets/left_arrow.html">
+    </object>
+    <object id="EdgeID" type="text/html" width="70" height="70" data-dw-widget="Edge" data="animation_assets/right_arrow/Assets/right_arrow.html">
+    </object>
   </div>
 
 
