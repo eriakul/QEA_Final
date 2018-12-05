@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
+  <script src="js/dampahead.js"></script>
+  <script src="js/content_page.js"></script>
+  <link rel="stylesheet" href="css/content.css">
+
+  <link rel="stylesheet" href="js/mathscribe/jqmath-0.4.3.css">
+
+	<script src="js/mathscribe/jquery-1.4.3.min.js"></script>
+	<script src="js/mathscribe/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+
+
+</head>
+
+
+
+<body onload="init(); right_arrow_init();" style="margin:0px;">
+
+	<div id="dampahead_container" style="background-color:rgba(255, 255, 255, 1.00); width:1224px; height:360px">
+		<canvas id="canvas" width="1224" height="360" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1224px; height:360px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Learn More!</a></li>
+      <button href = "#" class="button">HOME</button>
+    </ul>
+  </nav>
+
+
+
+
+  <div class="text-container">
+    <h1>Test Your Knowledge</h1>
+
+    <h2>Spring Mass Damper Systems</h2>
+
+    <p>Consider this system.</p>
+
+    <div class="image-container">
+      <img src="assets/Images/1massgraphic.png" alt="">
+    </div>
+
+    <p>The ODE of a mass, m, connected to a wall by a spring with spring constant k and a damper with damper constant b is</p>
+
+    $$ mx'' = -kx - bx' $$
+
+    <p>Reorganized, that is</p>
+
+    $$ mx'' + kx + bx' = 0 $$
+
+    <p>Now, consider a system that contains two masses coupled together to a wall with springs and dampers.</p>
+
+    <div class="image-container">
+      <img src="assets/Images/2massgraphic.png" alt="">
+    </div>
+
+    <h3>Problem 1) Write the ODE(s) for the coupled spring-mass-damper system.</h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p1")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p1">
+        <p>Equation for m1, </p>
+        $$m_1 x_1'' = -k_1 x_1 + k_2 (x_2 - x_1) - b_1 (x_1') - b_2 (x_1' - x_2')$$
+        <p>Equation for m2, </p>
+        $$m_2 x_2'' = -k_2 (x_2 - x_1) - b_2 (x_2' - x_1')$$
+      </div>
+    </div>
+
+    <h3>Problem 2) Reduce the equations you derived from problem 1 into a system of four
+    first-order equations. Hint: Define $x_1'$ and $x_2'$ as new variables. Your answer should be in the form of $M d/{dt}Y + D Y = 0 $ where M is a
+    matrix of mass values and Y is a vector containing the position and velocity of each mass.</h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p2")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p2">
+        <p>The matrix form of this solution is </p>
+        $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \0; \0]$$
+        <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
+      </div>
+    </div>
+
+    <p>Now, imagine you displaced the masses and set the system into motion. The way the blocks move is described by the free vibration response of the system. </p>
+
+    <h3>Problem 3) We are going to assume that we can find a solution for this system such that both masses are oscillating with the same frequency $ω$, but with different amplitudes.
+       To do so, replace $Y$ with $X e^{-iωt}$, where $X$ is an unknown vector of constants.
+     </h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p3")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p3">
+        <p>The new equation of motion goes from </p>
+        $$M d/{dt}Y + D Y = 0 $$
+        <p>to</p>
+        $$-M ω X e^{-iwt} + D X e^{-iwt} = 0 $$
+        <p>Which can be simplified and reorganized to be </p>
+        $$M ω X = D X $$
+
+      </div>
+    </div>
+
+    <h3>Problem 4) The solution to problem 3 is in the format of a general eigenvalue problem $λBx = Ax$.
+      Use this knowledge to compute the eigenvectors and eigenvalues of the problem. What do the eigenvectors
+      and eigenvalues represent?
+     </h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p4")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p4">
+        <p>There are a few ways you can solve this problem. One way is to use the <a href="https://www.mathworks.com/help/matlab/ref/eig.html">eig() function</a> in Matlab. </p>
+        <p>If you compare $M ω X = D X $ and $ λBx = Ax $, you'll notice that the scalar $ω$ corresonds to the scalar $λ$,
+        the eigenvalues of the problem.</p>
+        <p>Our goal is to solve for $ω$, the frequencies at which both masses are moving at the same frequency
+           but not necessarily the same amplitudes. These frequencies are known as the system's <b>eigenfrequencies</b>.</p>
+        <p>There are a few ways to format the code in Matlab, and your best resource is the <a href=""https://www.mathworks.com/help/matlab/ref/eig.html"">documentation</a>. Here's how
+        we did it.</p>
+        <code>
+          syms  m_1  m_2  b_1  b_2  k_1  k_2;
+
+          M = [ 1  0 0 0;
+                0 1 0 0;
+                0 0 m_1 0;
+                0 0 0 m_2];
+
+          D=[0 0 -1 0;
+             0 0 0 -1;
+             (k_1 + k_2) -k_2 (b_1 + b_2) -b_2;
+             -k_2 k_2 -b_2 b_2];
+
+          [eigenvectors, eigenvalues] = eig(D* inv( M))
+        </code>
+        <p>The eigenvectors we computed show the relationship between the positions and velocities of the
+        two masses when they are oscillating in unison. These vectors are the <b>eigenmodes</b> of the system.</p>
+        <p>The eigenfrequencies and eigenmodes are significant because it often corresponds to frequencies that add
+        the most power into a system. Applying a force at the same frequency as a system's natural frequency is like
+        pushing someone on a swing. If done at the right time, the person will swing higher and higher.</p>
+      </div>
+    </div>
+
+    <h2>Taipei 101 and Earthquakes</h2>
+
+    <p><a href="https://en.wikipedia.org/wiki/Taipei_101">Taipei 101</a> is a skyscraper in Taipei, Taiwan. In 2010,
+    it was the world's tallest skyscraper. The city, Taipei, is susceptible to earthquakes and typoons. The engineers and architects
+    behind the construction of Taipei 101 had to take these external forces from nature into account for the towers structural
+    integrity.</p>
+
+    <p>One of the precautions they took was installing a tuned mass damper at the top of the building that dampens the
+    oscillations caused by wind and earthquakes. Essentially, it is a giant weight suspended at the top of the tower. </p>
+
+    <p>The Taipei 101 damper is one of the only skyscraper dampers viewable to the public and became a significant tourist attraction.</p>
+
+    <div class="image-container">
+      <img src="assets/Images/damper.jpg" alt="">
+    </div>
+    <p>The building even has its own mascots called the Damper Babies. The Damper Babies explain
+    the function of the Taipei 101 tuned mass damper in this video. </p>
+
+    <div class="image-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/gwsNyCBSgrM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <p>If you want to see the direct effects of a tuned-mass damper, this video does a wonderful job illustrating it.</p>
+
+    <div class="image-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/f1U4SAgy60c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <p>Let's pretend to be the team of architects designing Taipei 101! Let's say that earthquakes in Taipei tend to have
+    a frequency of $ω$. Our goal is to create a simplified model of the skyscraper and find its natural frequencies.</p>
+
+    <p>We can put all our previous calculations to use by modelling the building like this.</p>
+
+    <div class="image-container long">
+      <img src="assets/Images/model.png" >
+    </div>
+
+    <p>In this model, the building is represented by discrete masses and the elasticity and stiffness of the building
+    is represented by k and b respectively. The mass at the top of the model is the damper mass and $k_d$ represent the
+    spring factor of the damper while $b_d$ represents the damping factor. The earthquake is represented by one-dimensional
+    left and right displacements of the ground.</p>
+
+    <p>For simplicity's sake, lets set the entire building to be one mass. The resulting system is exactly the one we saw earlier.</p>
+
+    <div class="image-container">
+      <img src="assets/Images/2massgraphic.png" alt="">
+    </div>
+
+    <p>In this system, $m_1$ is the mass of the tower and $m_2$ represents the damper mass. We will represent
+    the earthquake as a sinusoidal force, $f = sin(ω t)$, that effects only $m_1$ directly.</p>
+
+    <h3>Problem 5) Taking your solution from problem 2, how would you make the equation take into account
+    the additional force, $f = sin(ω t)$?</h3>
+
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p5")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p5">
+        <p>You may recall from earlier that a one-mass spring damper system is represented by this equation.</p>
+        $$ mx'' + kx + bx' = 0 $$
+        <p>An additional external force can be included like this.</p>
+        $$ mx'' + kx + bx' = f(t) $$
+        <p>We add the force into the matrix system in the same way.</p>
+        $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \f; \0] sin(ω t)$$
+        <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
+      </div>
+    </div>
+
+    <h2>Transfer Functions and Frequency Response</h2>
+    <h3>Modify <a href="https://drive.google.com/file/d/1sbpPlg7d72l8wX3Ds4V3xq5BeOPoQAuN/view">this notebook</a> to represent the system above.</h3>
+
+  </div>
+
+
+  <div class="page_nav">
+    <object id="EdgeID2" type="text/html" width="70" height="70" data-dw-widget="Edge" data="animation_assets/left_arrow/Assets/left_arrow.html">
+    </object>
+    <object id="EdgeID" type="text/html" width="70" height="70" data-dw-widget="Edge" data="animation_assets/right_arrow/Assets/right_arrow.html">
+    </object>
+  </div>
+
+
+</body>
+
+
+<body>
+</body>
+</html>
