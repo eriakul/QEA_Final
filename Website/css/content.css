@@ -106,7 +106,8 @@ code {
 			font-weight: bold;
 			font-size: 20;
 			line-height:1.6em;
-			letter-spacing: 1px;}
+			letter-spacing: 1px;
+			margin-bottom: 12px}
 
 		.text-container p{
 			font-size: 20px;

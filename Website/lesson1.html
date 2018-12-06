@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <title>Springs, Dampers, Eigenfrequencies and More!</title>
+
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
   <script src="js/dampahead.js"></script>
@@ -30,7 +32,7 @@
     <ul>
       <li><a href="#">About</a></li>
       <li><a href="#">Learn More!</a></li>
-      <button href = "#" class="button">HOME</button>
+      <button onclick="location.href='index.html'" class="button">HOME</button>
     </ul>
   </nav>
 
@@ -40,12 +42,24 @@
   <div class="text-container">
     <h1>Test Your Knowledge</h1>
 
+    <p>Ni hao ~ Before we take you to the Damper Babies' lab, you will need to know a few things.</p>
+    <p>First, you must be able to identify this.</p>
+
+    <div class="image-container">
+      <img src="assets/images/bao.jpg" alt="">
+    </div>
+
+    <p>This is a "xiao long bao". A delicious Chinese soup-dumpling steamed in traditional bamboo containers
+    called "xiao long". You must eat them carefully because they're full of hot broth and filling.</p>
+
+    <p>Below, we will present you with more vital concepts.</p>
+
     <h2>Spring Mass Damper Systems</h2>
 
     <p>Consider this system.</p>
 
     <div class="image-container">
-      <img src="assets/Images/1massgraphic.png" alt="">
+      <img src="assets/images/1massgraphic.png" alt="">
     </div>
 
     <p>The ODE of a mass, m, connected to a wall by a spring with spring constant k and a damper with damper constant b is</p>
@@ -59,7 +73,7 @@
     <p>Now, consider a system that contains two masses coupled together to a wall with springs and dampers.</p>
 
     <div class="image-container">
-      <img src="assets/Images/2massgraphic.png" alt="">
+      <img src="assets/images/2massgraphic.png" alt="">
     </div>
 
     <h3>Problem 1) Write the ODE(s) for the coupled spring-mass-damper system.</h3>
@@ -155,80 +169,8 @@
         pushing someone on a swing. If done at the right time, the person will swing higher and higher.</p>
       </div>
     </div>
-
-    <h2>Taipei 101 and Earthquakes</h2>
-
-    <p><a href="https://en.wikipedia.org/wiki/Taipei_101">Taipei 101</a> is a skyscraper in Taipei, Taiwan. In 2010,
-    it was the world's tallest skyscraper. The city, Taipei, is susceptible to earthquakes and typoons. The engineers and architects
-    behind the construction of Taipei 101 had to take these external forces from nature into account for the towers structural
-    integrity.</p>
-
-    <p>One of the precautions they took was installing a tuned mass damper at the top of the building that dampens the
-    oscillations caused by wind and earthquakes. Essentially, it is a giant weight suspended at the top of the tower. </p>
-
-    <p>The Taipei 101 damper is one of the only skyscraper dampers viewable to the public and became a significant tourist attraction.</p>
-
-    <div class="image-container">
-      <img src="assets/Images/damper.jpg" alt="">
-    </div>
-    <p>The building even has its own mascots called the Damper Babies. The Damper Babies explain
-    the function of the Taipei 101 tuned mass damper in this video. </p>
-
-    <div class="image-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/gwsNyCBSgrM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <p>If you want to see the direct effects of a tuned-mass damper, this video does a wonderful job illustrating it.</p>
-
-    <div class="image-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/f1U4SAgy60c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <p>Let's pretend to be the team of architects designing Taipei 101! Let's say that earthquakes in Taipei tend to have
-    a frequency of $ω$. Our goal is to create a simplified model of the skyscraper and find its natural frequencies.</p>
-
-    <p>We can put all our previous calculations to use by modelling the building like this.</p>
-
-    <div class="image-container long">
-      <img src="assets/Images/model.png" >
-    </div>
-
-    <p>In this model, the building is represented by discrete masses and the elasticity and stiffness of the building
-    is represented by k and b respectively. The mass at the top of the model is the damper mass and $k_d$ represent the
-    spring factor of the damper while $b_d$ represents the damping factor. The earthquake is represented by one-dimensional
-    left and right displacements of the ground.</p>
-
-    <p>For simplicity's sake, lets set the entire building to be one mass. The resulting system is exactly the one we saw earlier.</p>
-
-    <div class="image-container">
-      <img src="assets/Images/2massgraphic.png" alt="">
-    </div>
-
-    <p>In this system, $m_1$ is the mass of the tower and $m_2$ represents the damper mass. We will represent
-    the earthquake as a sinusoidal force, $f = sin(ω t)$, that effects only $m_1$ directly.</p>
-
-    <h3>Problem 5) Taking your solution from problem 2, how would you make the equation take into account
-    the additional force, $f = sin(ω t)$?</h3>
-
-    <div class="image-container">
-      <button class="answer-button" onclick='toggle_answer("p5")'>Check Answer</button>
-    </div>
-
-    <div class="image-container">
-      <div class="answer-box" id = "p5">
-        <p>You may recall from earlier that a one-mass spring damper system is represented by this equation.</p>
-        $$ mx'' + kx + bx' = 0 $$
-        <p>An additional external force can be included like this.</p>
-        $$ mx'' + kx + bx' = f(t) $$
-        <p>We add the force into the matrix system in the same way.</p>
-        $$ [\table \1,  \0, \0, \0; \0, \1, \0, \0; \0, \0, \m_1, \0; \0, \0, \0, \m_2;] d/{dt}  [\table \x_1; \x_2; \v_1; \v_2] + [\table \0,  \0, \-1, \0; \0, \0, \0, \-1; \(k_1 + k_2), \-k_2, \(b_1 + b_2), \-b_2; \-k_2, \k_2, \-b_2, \b_2;] [\table \x_1; \x_2; \v_1; \v_2] = [\table \0;  \0; \f; \0] sin(ω t)$$
-        <p>Given $v_1 = x_1'$ and $v_2 = x_2'$.</p>
-      </div>
-    </div>
-
-    <h2>Transfer Functions and Frequency Response</h2>
-    <h3>Modify <a href="https://drive.google.com/file/d/1sbpPlg7d72l8wX3Ds4V3xq5BeOPoQAuN/view">this notebook</a> to represent the system above.</h3>
-
+  <p>Now that we know a bit about coupled spring-damper oscillators and their eigenfrequencies, let's see these concepts in action.
+  Next, we'll be heading to the Damper Babies' lab. I heard they were testing a new simulation machine...</p>
   </div>
 
 
