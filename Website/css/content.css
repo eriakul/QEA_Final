@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 }
 
+.preloader {
+	position: absolute;
+
+}
+
 body{
 	background-color: #dbdbdb;
 	font-family: Barlow, Arial, Helvetica, sans-serif;

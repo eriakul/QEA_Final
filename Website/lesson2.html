@@ -58,9 +58,11 @@
     </div>
 
     <p>Optimizing Taipei's structure to withstand both typhoon winds and earthquakes was no easy feat. A building that has <a href="http://global.ctbuh.org/resources/papers/download/1650-structural-design-of-taipei-101-the-worlds-tallest-building.pdf">
-      "stiff enough form for wind drift does not automatically have the overload behavior desired for seismic ductility"</a>.
-    Something the architects had to take into consideration was the building's ductility (elastic "spring" factor), its stiffness ("damping" factor), and
-    the natural frequency at which the tower oscillates. Adding energy into a system at its natural frequency can create a lot of trouble.
+      "stiff enough form for wind drift does not automatically have the overload behavior desired for seismic ductility"</a>. This means that while a stiff building is good
+      for dealing with harsh winds, it makes the structure more susceptible to earthquakes!
+    Some things the architects had to take into consideration was balancing the building's ductility (elastic "spring" factor) and its stiffness ("damping" factor), and
+    setting its natural frequency away from common earthquake frequencies. Remember the example we mentioned before
+    about pushing someone on a swing. Adding energy into a system at its natural frequency can create a lot of trouble.
     </p>
 
     <p>An earthquake with a frequency of $ω$ that matches Taipei 101's natural frequency would really cause the tower to crash and burn...
@@ -90,7 +92,7 @@
     <p>In this system, $m_1$ is the mass of the tower and $m_2$ represents the damper mass. We will represent
     the earthquake as a sinusoidal force, $f = sin(ω t)$, that effects only $m_1$ directly.</p>
 
-    <h3>Problem 1) Taking your solution <a href="lesson1.html">from earlier</a>, how would you make the equation take into account
+    <h3>Problem 1) Working off of our solution to problem 2 <a href="lesson1.html">from earlier</a>, how would you make the equation take into account
     the additional force, $f = sin(ω t)$?</h3>
 
     <div class="image-container">
@@ -99,7 +101,7 @@
 
     <div class="image-container">
       <div class="answer-box" id = "p5">
-        <p>You may recall from earlier that a one-mass spring damper system is represented by this equation.</p>
+        <p>You may recall that a one-mass spring damper system is represented by this equation.</p>
         $$ mx'' + kx + bx' = 0 $$
         <p>An additional external force can be included like this.</p>
         $$ mx'' + kx + bx' = f(t) $$
@@ -110,8 +112,81 @@
     </div>
 
     <h2>Transfer Functions and Frequency Response</h2>
-    <h3>Modify <a href="https://drive.google.com/file/d/1sbpPlg7d72l8wX3Ds4V3xq5BeOPoQAuN/view">this notebook</a> to represent the system above.</h3>
 
+    <p>The block diagram of the system that simulates Taipei 101 looks like this: </p>
+
+    <div class="image-container">
+      <img src="assets/images/transferfunction.png" >
+    </div>
+
+    <p>$f(t)$ is the input force of the system at a certain frequency. The $m_1$ system is the system containing a spring and damper connecting the first mass to the wall.
+    The output of  $m_1$ system is the position of $m_1$ and this position feeds into the $m_2$ system. Similar to the $m_1$ system,
+    the $m_2$ system is the system containing a spring and damper connecting the second mass to the first mass. The output of the $m_2$ system is the position of $m_2$. </p>
+
+    <div class="image-container">
+      <img src="assets/images/systems.png" >
+    </div>
+
+    <p>Something to note is that $f(t)$ is a simplified representation of the movement of the wall.
+      Physically, the wall provides not so much a force but a forced displacement.
+      However, the math for this gets messy so we will model it an external force acting upon the mass.</p>
+
+    <p>Our goal is to assess the <b>frequency response</b> of the system.</p>
+
+    <p>Before we jump into anayzing this coupled spring-mass-damper system, let's look at a simpler example.</p>
+
+    <div class="image-container">
+      <img src="assets/images/1massgraphic.png" >
+    </div>
+
+    <p>The equation that describes this system is </p>
+
+    $$ mx'' = -kx - bx' $$
+
+    <p>Including the external force, the new equation is </p>
+
+    $$ mx'' + kx + bx' = f(t) $$
+
+    <p>First we find the Laplace form of this equation. Assuming that the starting position $x(0)$ and starting velocity $x'(0)$
+      is $0$, it becomes</p>
+
+    $$ s^2 m X(s) + k X(s) + s b X(s) = F(s) $$
+
+    <p>The transfer function becomes</p>
+
+    $$ {X(s)}/{F(s)} = 1/{s^2 m + k + s b} $$
+
+    <p>Due to the <a href="https://www.youtube.com/watch?v=S7zGQWX3FZQ">relationship between the Laplace and Fourier transforms</a> we can bring this
+    transfer function into the frequency domain by substituting $s$ with $i ω$. We get</p>
+
+    $$ {X(i ω)}/{F(i ω)} = 1/{(i ω)^2 m + k + i ω b} $$
+
+    <p>Now let's visualize what the frequency response of the system is - that is, how does the input frequency from $f(t)$ affect the movement of
+    the mass? </p>
+
+    <p>With the mass $m$, spring constant $k$ and damping constant $b$ all set to 10, we plotted the real and imaginary parts of the transfer function with respect
+    to ω. The real part corresponds to the resulting amplitude response for each input frequency. The imaginary part represents the phase offset of the frequency response.
+    This visualization is the bode plot of the system.</p>
+
+    <div class="image-container">
+      <img src="assets/images/b10.png" >
+    </div>
+
+    <p>So you might be thinking, "Wait a minute, why is the amplitude response peaking when the frequency input is 0?"</p>
+    <p>The answer becomes clearer when you turn down the damping constant $b$. This is the bode plot with $b = 5$. </p>
+
+    <div class="image-container">
+      <img src="assets/images/b10.png" >
+    </div>
+    <div class="image-container">
+      <button class="answer-button" onclick='toggle_answer("p5")'>Check Answer</button>
+    </div>
+
+    <div class="image-container">
+      <div class="answer-box" id = "p5">
+        <p>Answer</p>
+      </div>
+    </div>
   </div>
 
 

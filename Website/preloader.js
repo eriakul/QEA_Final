@@ -175,6 +175,33 @@ an.getComposition = function(id) {
 }
 
 
-
 })(createjs = createjs||{}, AdobeAn = AdobeAn||{});
+
+
 var createjs, AdobeAn;
+
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("254D87DECCE736468334151109401099");
+	var lib=comp.getLibrary();
+	handleComplete({},comp);
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	exportRoot = new lib.load();
+	stage = new lib.Stage(canvas);
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
