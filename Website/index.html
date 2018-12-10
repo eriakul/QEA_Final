@@ -25,6 +25,17 @@
   }
 </style>
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+      function hideLoader() {
+        $('#loading').hide();
+      }
+
+      $(window).ready(hideLoader);
+
+      // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
+      setTimeout(hideLoader, 20 * 1000);
+</script>
 <script rel = "preload" src="js/index.js"></script>
 <link rel="stylesheet" href="css/content.css">
 <script>
@@ -105,11 +116,13 @@ function playSound(id, loop) {
 </script>
 <!-- write your code here -->
 </head>
+<div id="loading"></div>
 <body onload="init();" style="margin:0px;">
+
+
   <nav id="navbar">
     <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Learn More!</a></li>
+      <li><a href="https://www.taipei-101.com.tw/en/index.aspx">Learn More!</a></li>
       <button href = "#" class="button">HOME</button>
     </ul>
   </nav>
